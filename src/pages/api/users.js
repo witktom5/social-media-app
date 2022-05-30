@@ -22,6 +22,17 @@ const handler = async (req, res) => {
           return res.status(400).send(message);
         }
 
+        //  Password validation (8 chars, 1 lower 1 upper 1 number and special character)
+
+        const regexPassword =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+
+        if (!user.password.match(regexPassword)) {
+          const message =
+            'Password must be between 8 and 20 characters, 1 lowercase, 1 uppercase, 1 number and a special character';
+          return res.status(400).send(message);
+        }
+
         // Hash password to store it in DB
 
         const saltRounds = 10;
