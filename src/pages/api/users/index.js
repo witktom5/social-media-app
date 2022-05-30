@@ -7,7 +7,6 @@ import { generateToken } from '../../../../utils/generateToken';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    // Check if name, email or password is provided
     const { name, email, password } = req.body;
     try {
       // Find if user already exists
